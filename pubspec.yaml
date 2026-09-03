@@ -27,16 +27,16 @@ dependencies:
   pointycastle: ^4.0.0
 
   # Secure key storage (Android Keystore / iOS Keychain)
-  flutter_secure_storage: ^10.3.1
+  flutter_secure_storage: ^11.0.0
 
   # Biometric authentication
-  local_auth: ^2.3.0
+  local_auth: ^3.0.2
 
   # Google Sign-In
   google_sign_in: ^7.2.0
 
   # Google Drive API
-  googleapis: ^16.0.0
+  googleapis: ^17.0.0
 
   # HTTP client
   http: ^1.2.2
@@ -45,19 +45,19 @@ dependencies:
   image_picker: ^1.1.2
 
   # File picker (local backup/restore)
-  file_picker: ^8.1.4
+  file_picker: ^12.2.0
 
   # Navigation
-  go_router: ^17.3.0
+  go_router: ^18.0.1
 
   # Animations
   flutter_animate: ^4.5.0
 
   # Share sheet
-  share_plus: ^12.0.2
+  share_plus: ^13.3.0
 
   # App version info
-  package_info_plus: ^9.0.1
+  package_info_plus: ^10.2.1
 
   # Date/number formatting
   intl: ^0.20.2
@@ -72,7 +72,7 @@ dependencies:
   flutter_slidable: ^4.0.3
 
   # PIN entry widget
-  pin_code_fields: ^8.0.1
+  pin_code_fields: ^9.4.0
 
   # SVG icons
   flutter_svg: ^2.0.10+1

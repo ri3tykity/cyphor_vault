@@ -17,7 +17,7 @@ class SecuritySettingsScreen extends ConsumerStatefulWidget {
 
 class _SecuritySettingsScreenState extends ConsumerState<SecuritySettingsScreen> {
   bool _changingPIN = false;
-  final _newPinCtrl = TextEditingController();
+  final _newPinCtrl = PinInputController();
 
   @override
   void dispose() {
@@ -95,26 +95,19 @@ class _SecuritySettingsScreenState extends ConsumerState<SecuritySettingsScreen>
                     Text('Enter new PIN (4–6 digits)',
                         style: TextStyle(color: context.palette.textSecondary, fontSize: 13)),
                     const SizedBox(height: 12),
-                    PinCodeTextField(
-                      appContext: context,
+                    MaterialPinField(
                       length: 6,
-                      controller: _newPinCtrl,
-                      autoDisposeControllers: false,
+                      pinController: _newPinCtrl,
                       obscureText: true,
-                      keyboardType: TextInputType.number,
-                      pinTheme: PinTheme(
-                        shape: PinCodeFieldShape.box,
+                      theme: MaterialPinTheme(
+                        shape: MaterialPinShape.outlined,
+                        cellSize: const Size(38, 44),
                         borderRadius: BorderRadius.circular(8),
-                        fieldHeight: 44,
-                        fieldWidth: 38,
-                        activeFillColor: context.palette.surfaceLight,
-                        inactiveFillColor: context.palette.background,
-                        selectedFillColor: context.palette.surfaceLight,
-                        activeColor: context.palette.primary,
-                        inactiveColor: context.palette.border,
-                        selectedColor: context.palette.primary,
+                        fillColor: context.palette.background,
+                        focusedFillColor: context.palette.surfaceLight,
+                        focusedBorderColor: context.palette.primary,
+                        borderColor: context.palette.border,
                       ),
-                      enableActiveFill: true,
                       onChanged: (_) {},
                       onCompleted: _savePIN,
                     ),

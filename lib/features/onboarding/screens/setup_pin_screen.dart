@@ -14,8 +14,8 @@ class SetupPinScreen extends ConsumerStatefulWidget {
 }
 
 class _SetupPinScreenState extends ConsumerState<SetupPinScreen> {
-  final _pinCtrl = TextEditingController();
-  final _confirmCtrl = TextEditingController();
+  final _pinCtrl = PinInputController();
+  final _confirmCtrl = PinInputController();
   String _firstPin = '';
   bool _confirming = false;
   bool _loading = false;
@@ -205,28 +205,20 @@ class _SetupPinScreenState extends ConsumerState<SetupPinScreen> {
   }
 
   Widget _pinField(
-      TextEditingController ctrl, void Function(String) onCompleted) {
-    return PinCodeTextField(
-      appContext: context,
+      PinInputController ctrl, void Function(String) onCompleted) {
+    return MaterialPinField(
       length: 6,
-      controller: ctrl,
-      autoDisposeControllers: false,
+      pinController: ctrl,
       obscureText: true,
-      keyboardType: TextInputType.number,
-      autoDismissKeyboard: true,
-      pinTheme: PinTheme(
-        shape: PinCodeFieldShape.box,
+      theme: MaterialPinTheme(
+        shape: MaterialPinShape.outlined,
+        cellSize: const Size(44, 52),
         borderRadius: BorderRadius.circular(10),
-        fieldHeight: 52,
-        fieldWidth: 44,
-        activeFillColor: context.palette.surfaceLight,
-        inactiveFillColor: context.palette.background,
-        selectedFillColor: context.palette.surfaceLight,
-        activeColor: context.palette.primary,
-        inactiveColor: context.palette.border,
-        selectedColor: context.palette.primary,
+        fillColor: context.palette.background,
+        focusedFillColor: context.palette.surfaceLight,
+        focusedBorderColor: context.palette.primary,
+        borderColor: context.palette.border,
       ),
-      enableActiveFill: true,
       onChanged: (_) {},
       onCompleted: onCompleted,
     );

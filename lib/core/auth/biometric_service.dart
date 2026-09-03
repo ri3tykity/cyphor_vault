@@ -30,11 +30,8 @@ class BiometricService {
           '[BiometricService] Starting authentication with reason: $reason');
       final result = await _auth.authenticate(
         localizedReason: reason,
-        options: const AuthenticationOptions(
-          biometricOnly: false,
-          stickyAuth: true,
-          useErrorDialogs: true,
-        ),
+        biometricOnly: false,
+        persistAcrossBackgrounding: true,
       );
       debugPrint('[BiometricService] Authentication result: $result');
       return result;
