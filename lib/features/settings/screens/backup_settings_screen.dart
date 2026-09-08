@@ -169,7 +169,7 @@ class BackupSettingsScreen extends ConsumerWidget {
     String? customDir;
     if (choice == 'custom') {
       try {
-        customDir = await FilePicker.platform.getDirectoryPath();
+        customDir = await FilePicker.getDirectoryPath();
         if (customDir == null || !context.mounted) return;
       } catch (e) {
         if (context.mounted) {

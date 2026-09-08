@@ -14,9 +14,9 @@ class ChangePinScreen extends ConsumerStatefulWidget {
 }
 
 class _ChangePinScreenState extends ConsumerState<ChangePinScreen> {
-  final _currentPinCtrl = TextEditingController();
-  final _newPinCtrl = TextEditingController();
-  final _confirmPinCtrl = TextEditingController();
+  final _currentPinCtrl = PinInputController();
+  final _newPinCtrl = PinInputController();
+  final _confirmPinCtrl = PinInputController();
 
   // Step 0: verify current PIN, Step 1: enter new PIN, Step 2: confirm new PIN
   int _step = 0;
@@ -177,7 +177,7 @@ class _ChangePinScreenState extends ConsumerState<ChangePinScreen> {
 class _StepWidget extends StatelessWidget {
   final String title;
   final String subtitle;
-  final TextEditingController ctrl;
+  final PinInputController ctrl;
   final void Function(String) onCompleted;
 
   const _StepWidget({
@@ -203,26 +203,19 @@ class _StepWidget extends StatelessWidget {
             style: TextStyle(
                 color: context.palette.textSecondary, fontSize: 13)),
         const SizedBox(height: 28),
-        PinCodeTextField(
-          appContext: context,
+        MaterialPinField(
           length: 6,
-          controller: ctrl,
-          autoDisposeControllers: false,
+          pinController: ctrl,
           obscureText: true,
-          keyboardType: TextInputType.number,
-          pinTheme: PinTheme(
-            shape: PinCodeFieldShape.box,
+          theme: MaterialPinTheme(
+            shape: MaterialPinShape.outlined,
+            cellSize: const Size(44, 52),
             borderRadius: BorderRadius.circular(10),
-            fieldHeight: 52,
-            fieldWidth: 44,
-            activeFillColor: context.palette.surfaceLight,
-            inactiveFillColor: context.palette.background,
-            selectedFillColor: context.palette.surfaceLight,
-            activeColor: context.palette.primary,
-            inactiveColor: context.palette.border,
-            selectedColor: context.palette.primary,
+            fillColor: context.palette.background,
+            focusedFillColor: context.palette.surfaceLight,
+            focusedBorderColor: context.palette.primary,
+            borderColor: context.palette.border,
           ),
-          enableActiveFill: true,
           onChanged: (_) {},
           onCompleted: onCompleted,
         ),
